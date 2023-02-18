@@ -1,0 +1,726 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@400;500;600;700;800&display=swap");
+
+@mixin loginBtnSpan {
+  display: block;
+  width: fit-content;
+  padding-left: 30px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin loginIcon {
+  padding-left: 30px;
+  position: relative;
+  &::after {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 47%;
+    transform: translateY(-50%);
+  }
+}
+@mixin enrollButton {
+  width: 80px;
+  height: 40px;
+  background-color: var(--enrollButton);
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin badge {
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px;
+  height: fit-content;
+}
+body {
+  // overflow-y: hidden;
+  background-color: var(--bgColor);
+}
+.darkMode {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  z-index: 10;
+  height: 70px;
+  //   background-color: #5b46ce;
+  // width: 200px;
+}
+.navBar {
+  height: 70px;
+  width: calc(100% - 70px);
+  background-color: var(--navBg);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 70px;
+  position: relative;
+  h1 {
+    font-family: "Sofia Sans Semi Condensed", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  &::after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -70px;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--navBg);
+    z-index: -1;
+  }
+}
+.container {
+  display: flex;
+}
+.sideBar {
+  width: 200px;
+  height: 100%;
+  background-color: #fff;
+  border-right: 1px solid #e1e2e4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 70px;
+  padding-bottom: 100%;
+  > ul {
+    li {
+      padding-left: 20px;
+      height: 50px;
+      line-height: 50px;
+      width: 84%;
+      border-radius: 0 15px 15px 0;
+      cursor: pointer;
+      &:hover {
+        background-color: #f7f5fd;
+      }
+    }
+  }
+  .login {
+    @include loginIcon;
+    &::after {
+      content: "";
+      background: url("../public/img/user.png") no-repeat;
+      background-size: contain;
+    }
+  }
+  .myList {
+    @include loginIcon;
+    &::after {
+      content: "";
+      background: url("../public/img/checklist.png") no-repeat;
+      background-size: contain;
+    }
+  }
+  .bookmark {
+    @include loginIcon;
+    &::after {
+      content: "";
+      background: url("../public/img/bookmark.png") no-repeat;
+      background-size: contain;
+    }
+  }
+}
+.contents {
+  width: 100%;
+  margin-left: 201px;
+  .searchBox {
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid #e1e2e4;
+    border-bottom: 1px solid #e1e2e4;
+    > div {
+      display: block !important;
+    }
+    input {
+      width: 100%;
+      height: 30px;
+      position: relative;
+      border: none;
+      outline: none;
+      padding-left: 20px;
+    }
+    input::-webkit-input-placeholder {
+      background-image: url("../public/img/loupe.png");
+      background-size: contain;
+      background-position: 1px center;
+      background-repeat: no-repeat;
+      text-indent: 20px;
+      color: #a1a1a1;
+    }
+  }
+  .enrollButton{
+    margin-top: 20px;
+  }
+}
+
+.mainList {
+  padding: 20px;
+  h2 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 40px;
+  }
+  .listWrap {
+    grid-template-columns: repeat(6, 2fr);
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .list {
+    background-color: #fff;
+    width: 200px;
+    height: 250px;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    img {
+      width: 45px;
+      border-radius: 8px;
+    }
+    .listTitle {
+      font-weight: 500;
+      padding: 10px 0 5px 0;
+    }
+    .inrText {
+      display: -webkit-box;
+      color: #adabab;
+      font-size: 14px;
+      white-space: normal;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
+    }
+  }
+  .progress {
+    p {
+      font-size: 12px;
+      color: #a1a1a1;
+      line-height: 20px;
+      img {
+        width: 15px;
+        border-radius: 0;
+        margin-bottom: -3px;
+        margin-right: 4px;
+      }
+    }
+    span {
+      display: block;
+    }
+    .progressBar {
+      width: 100%;
+      height: 5px;
+      background-color: var(--bgColor);
+      position: relative;
+      span {
+        background-color: #b08dee;
+        width: 30%;
+        height: 5px;
+        border-radius: 0 3px 3px 0;
+      }
+    }
+  }
+}
+
+.nickname {
+  font-size: 13px;
+  span {
+    display: block;
+  }
+}
+.registrationDate {
+  font-size: 13px;
+  text-align: right;
+  padding: 10px 0;
+}
+.sideList {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 30px);
+  margin-top: 70px;
+  background-color: #f5f5fb;
+  border-radius: 8px;
+  padding: 15px 0;
+  p {
+    text-align: center;
+  }
+  > ul {
+    margin-left: 30px;
+    > li {
+      line-height: 30px;
+      position: relative;
+      &:nth-of-type(1)::after {
+        content: "";
+        background: url("../public/img/crown.png") no-repeat;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 45%;
+        left: -24px;
+        background-size: contain;
+        transform: translateY(-50%);
+      }
+      span {
+        &:nth-of-type(2) {
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+}
+.loginButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  button {
+    width: 350px;
+    height: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    &:nth-of-type(1) {
+      background-color: #ffeb3b;
+      color: #3e2723;
+      position: relative;
+      span {
+        @include loginBtnSpan;
+        &::after {
+          background: url(../public/img/kakao-talk.png) no-repeat;
+          width: 25px;
+          height: 25px;
+          background-size: contain;
+        }
+      }
+    }
+    &:nth-of-type(2) {
+      background-color: #00bf18;
+      color: #fff;
+      position: relative;
+      span {
+        @include loginBtnSpan;
+        &::after {
+          background: url(../public/img/naver.png) no-repeat;
+          width: 25px;
+          height: 25px;
+          background-size: 85px;
+          background-position-x: -10px;
+          background-position-y: -9px;
+        }
+      }
+    }
+    &:nth-of-type(3) {
+      background-color: #fff;
+      position: relative;
+      span {
+        @include loginBtnSpan;
+        &::after {
+          background: url(../public/img/google.png) no-repeat;
+          width: 25px;
+          height: 25px;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}
+.nicknameBox {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: fit-content;
+  label {
+    color: #6e6e6e;
+  }
+  .checkInput {
+    margin: 20px 0 50px 0;
+    input {
+      width: 250px;
+      height: 35px;
+      box-sizing: border-box;
+      border: none;
+    }
+    button {
+      width: 100px;
+      height: 35px;
+      background-color: #eae7fb;
+      border: none;
+      cursor: pointer;
+      color: #5b46ce;
+      font-weight: 600;
+    }
+  }
+  > button {
+    width: 80px;
+    height: 40px;
+    background-color: #826df5;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 0 auto;
+  }
+}
+.loginNickname {
+  margin-bottom: 30px;
+  span {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    &:nth-of-type(2) {
+      padding-top: 10px;
+    }
+    img {
+      width: 45px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.enrollButton {
+  @include enrollButton;
+}
+
+.registerWrap {
+  margin-top: 30px;
+  .registerWord {
+    font-size: 28px;
+    font-weight: 600;
+    color: #5b46ce;
+  }
+  .depthWrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    p {
+      margin-bottom: 10px;
+    }
+    input {
+      width: 60px;
+      height: 30px;
+      border: 2px solid #d4d4ef;
+      border-radius: 5px;
+      text-align: center;
+      text-indent: 13px;
+    }
+    select {
+      width: 100%;
+      border: 1px solid #d4d4ef;
+      font-size: 15px;
+      padding: 10px;
+    }
+    ul {
+      li {
+        background-color: #d9d9f6;
+        margin-bottom: 15px;
+        padding: 15px 10px;
+        display: flex;
+        input {
+          width: auto;
+        }
+      }
+    }
+    .variation {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        background-color: #fff;
+        border: 1px solid #d4d4ef;
+        border-radius: 5px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        color: #5b46ce;
+        margin-left: 5px;
+      }
+    }
+  }
+  .tabs {
+    > ul {
+      display: flex;
+      li {
+        background-color: var(--tabMenu);
+        color: var(--white);
+        font-size: 20px;
+        border-radius: 5px 5px 0 0;
+        margin-right: 5px;
+        margin-bottom: 0;
+        cursor: pointer;
+
+      }
+      li.current{
+        margin-right: 0;
+        background-color: #f3eefb;
+        color: #8e6ff0;
+        border: 1px solid;
+        border-color: #826df5 #826df5 #d9d9f6;;
+      }
+    }
+  }
+  #tabContents{
+    position: relative;
+    > ul{
+      background-color: var(--bgColor);
+      // position: absolute;
+      width: 100%;
+    }
+  }
+}
+.registerContent {
+  width: calc(100% - 150px);
+  margin: 0 auto;
+  .sort {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 0 20px 0;
+    span {
+      color: #9e84f1;
+      margin-right: 10px;
+    }
+  }
+  ul > li {
+    background-color: #fff;
+    padding: 30px;
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid #f3f3f3;
+    margin-bottom: 20px;
+    &:hover {
+      border: 2px solid #5b46ce;
+      cursor: pointer;
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    .contentBox {
+      display: flex;
+      justify-content: space-between;
+    }
+    .contentTitle {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f1f1fe1;
+      > p {
+        display: inline-block;
+        margin: 0 15px 10px 0;
+
+      }
+    }
+    .buttonBox {
+      button {
+        border: 2px solid #c3baf2;
+        background-color: #f9f9f9;
+        ;
+        cursor: pointer;
+        padding: 3px 5px;
+        border-radius: 5px;
+        color: #7c7387;
+        font-weight: 600;
+        margin-left: 5px;
+      }
+    }
+    > p {
+      color: #999;
+      letter-spacing: 0.7px;
+      width: calc(100% - 50px);
+      white-space: normal;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
+      display: -webkit-box;
+      >span{
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.componentsLike {
+  .like {
+    cursor: pointer;
+  }
+  .progress {
+    p {
+      color: #999;
+      letter-spacing: 0.7px;
+      margin-bottom: 5px;
+      img {
+        width: 20px;
+        border-radius: 0;
+        margin-bottom: -3px;
+        margin-right: 4px;
+      }
+    }
+    span {
+      display: block;
+    }
+    .progressBar {
+      width: 100%;
+      height: 5px;
+      background-color: var(--bgColor);
+      position: relative;
+      span {
+        background-color: #b08dee;
+        width: 30%;
+        height: 5px;
+        border-radius: 0 3px 3px 0;
+      }
+    }
+  }
+}
+.likeWrap {
+  margin-top: 10px;
+}
+.likeWrap > span {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  color: #c4c1c1;
+  font-size: 13px;
+}
+.justRegistered {
+  width: 100%;
+  background-color: rgba(222, 218, 248, 0.5803921569);
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #393939;
+  p {
+    text-align: center;
+  }
+  .enrollButton {
+  }
+}
+.listView {
+  margin: 30px;
+  background-color: #ecebfd;
+  padding: 20px 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  .nickname {
+    width: 50px;
+    margin: 0 20px;
+    img {
+      width: 50px;
+    }
+    span {
+      text-align: center;
+    }
+  }
+  ul {
+    margin-top: 10px;
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    li {
+      float: left;
+      width: fit-content;
+      padding: 5px 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-right: 35px;
+      position: relative;
+      &::after {
+        content: "";
+        display: block;
+        width: 17px;
+        height: 17px;
+        background: url(../public/img/right-arrow.png) no-repeat;
+        position: absolute;
+        z-index: 10;
+        background-size: contain;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -25px;
+      }
+      &:last-of-type {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.badge {
+  @include badge;
+  color: #00bf18;
+  background-color: #cefacb;
+  margin-right: 5px;
+}
+.countBadge {
+  @include badge;
+  color: #f82476;
+  background-color: #f3b0ca;
+}
+.rankBage {
+  @include badge;
+
+  color: #ffeb3b;
+  background-color: #f5ad21;
+  margin-right: 5px;
+  position: relative;
+  padding-left: 15px;
+  &::after {
+    display: block;
+    content: "";
+    background: url(../public/img/rank.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+.enrollButton.enroll02 {
+  margin: 0;
+}
