@@ -92,7 +92,6 @@ const RegisterComplete = () => {
                   </div>
                   <div className="likeWrap">
                     <span>2days ago</span>
-                    {/* <Like /> */}
                   </div>
                 </>
               </li>

@@ -2,8 +2,8 @@ import JoinLayout from "../layout/join-layout";
 import Router, { useRouter } from "next/router";
 import { useState } from "react";
 import { RootState, useAppDispatch } from "../store";
-import { useSelector } from "react-redux";
-import { setNickname } from "../store/reducers/user-reducer";
+import { ReactReduxContext, useSelector } from "react-redux";
+import userReducer, { setNickname } from "../store/reducers/user-reducer";
 
 
 const Nickname = () => {
@@ -17,6 +17,7 @@ const Nickname = () => {
     dispatch(setNickname(value));
     Router.push("/")
   }
+
 
   return (
     <JoinLayout>

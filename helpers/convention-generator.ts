@@ -3,7 +3,7 @@ import ConventionInterface from "../interface/convention-interface";
 const conventionGenerator = (item: ConventionInterface) => {
     console.log(item);
     return item.depth.map((i) => {
-        let content = "";
+        let content = ""
         switch (item.name) {
           case "snake_casing":
             content = `${item.keyword} _ ${i.text}`;
