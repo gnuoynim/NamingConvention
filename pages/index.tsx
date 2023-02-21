@@ -4,6 +4,7 @@ import SearchComponent from "../components/search-component";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+
 const Index = () => {
   const router = useRouter();
   const [isShown, setIsShown] = useState(true);
@@ -14,6 +15,8 @@ const Index = () => {
   const onClickDisplay = () => {
     setIsShown(false);
   };
+
+
 
   return (
     <BaseLayout>
