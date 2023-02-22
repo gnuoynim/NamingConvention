@@ -6,31 +6,27 @@ import LoginComponent from "../components/login-component";
 import { RootState, useAppDispatch } from "../store";
 import { Selector, useSelector } from "react-redux";
 
-
-
 const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const user = useSelector((state:RootState) => state.user)
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
-
 
   const handleClickLogin = () => {
     router.push("/login");
   };
-  const handleCLickBase=()=>{
-    router.push("/")
-  }
+  const handleCLickBase = () => {
+    router.push("/");
+  };
 
   return (
-    <div >
+    <div>
       <div className="navBar">
         <h1 onClick={handleCLickBase}>NamingConvention</h1>
         <DarkmodeComponent />
       </div>
+      <div className="emptySpace"></div>
       <div className="container">
-        {user.email === '' ?
-        <LoginComponent/> :
-        <LogoutComponent/>}
+        {user.email === "" ? <LoginComponent /> : <LogoutComponent />}
         <div className="contents">{children}</div>
       </div>
     </div>

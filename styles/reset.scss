@@ -90,17 +90,32 @@ video {
 
 :root {
   --bgColor: #f6f7f9;
-  --white :#fff;
-  --enrollButton : #826df5;
-  --navBg:#fff;
-  --tabMenu:#826df5;
+  --sidebar: #fff;
+  --white: #fff;
+  --enrollButton: #826df5;
+  --navBg: #fff;
+  --tabMenu: #826df5;
+  --title: #1c1e26;
+  --sideHover: #f7f5fd;
+  --listBox:#fff;
+  --searchBox :#fff;
+  --sideListBox :#f5f5fb;
+  --listView:#ecebfd;
 }
 
 [data-theme="light"] {
   --bgColor: #f6f7f9;
 }
 
-
 [data-theme="dark"] {
-    --bgColor: #000;
-  }
+  --bgColor: #121212;
+  --sidebar: #121212;
+  --listBox: #1c1e26;
+  --navBg: #121212;
+  --title: #fff;
+  --fontColor: #fff;
+  --sideHover: #c8c6d314;
+  --searchBox : #1c1e26;
+  --sideListBox:#573AF5;
+  --listView:#c8c6d314;
+}

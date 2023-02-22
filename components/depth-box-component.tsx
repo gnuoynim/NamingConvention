@@ -1,7 +1,6 @@
 import ScaleInterface from "../interface/scale-interface";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
-import { increment } from "../store/reducers/count-reducer";
 import { useState, useEffect } from "react";
 import { removeDepth } from "../store/reducers/depth-reducer";
 

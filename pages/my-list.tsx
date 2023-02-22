@@ -24,25 +24,23 @@ const MyList = () => {
       let content = "";
       switch (item.name) {
         case "snake_casing":
-          content = `${item.keyword} _ ${i.text}`;
-          console.log(content);
+          content = `${item.keyword}_${i.text}`;
           break;
+
         case "camelCasing":
-          content = `${item.keyword
-            .charAt(0)
-            .toLowerCase()}${item.keyword.slice(1, item.keyword.length)} ${
-            i.text
-          }`;
+          content = `${item.keyword.charAt(0).toLowerCase()}
+            ${item.keyword.slice(1, item.keyword.length)} 
+            ${i.text}`;
           break;
+
         case "PascalCase":
-          content = `${item.keyword
-            .charAt(0)
-            .toUpperCase()}${item.keyword.slice(1, item.keyword.length)} ${
-            i.text
-          }`;
+          content = `${item.keyword.charAt(0).toUpperCase()}
+          ${item.keyword.slice(1, item.keyword.length)} 
+          ${i.text}`;
           break;
+
         case "kebab-case":
-          content = `${item.keyword} - ${i.text}`;
+          content = `${item.keyword}-${i.text}`;
           break;
       }
       return <span>{content}</span>;
@@ -91,7 +89,7 @@ const MyList = () => {
                   </div>
                   <div className="likeWrap">
                     <span>2days ago</span>
-                    <Like />
+                    <Like index={index} />
                   </div>
                 </>
               </li>

@@ -21,6 +21,7 @@
 @mixin loginIcon {
   padding-left: 30px;
   position: relative;
+  color: var(--fontColor);
   &::after {
     width: 20px;
     height: 20px;
@@ -74,12 +75,14 @@ body {
   align-items: center;
   justify-content: center;
   left: 70px;
-  position: relative;
+  position: fixed;
+  z-index: 20;
   h1 {
     font-family: "Sofia Sans Semi Condensed", sans-serif;
     font-size: 28px;
     font-weight: 600;
     cursor: pointer;
+    color: var(--title);
   }
   &::after{
     content: "";
@@ -93,15 +96,19 @@ body {
     z-index: -1;
   }
 }
+.emptySpace{
+  height: 70px;
+}
 .container {
   display: flex;
 }
 .sideBar {
   width: 200px;
   height: 100%;
-  background-color: #fff;
+  background-color: var(  --sidebar);
   border-right: 1px solid #e1e2e4;
   position: fixed;
+  z-index: 25;
   top: 0;
   left: 0;
   padding-top: 70px;
@@ -115,7 +122,7 @@ body {
       border-radius: 0 15px 15px 0;
       cursor: pointer;
       &:hover {
-        background-color: #f7f5fd;
+        background-color: var(--sideHover);
       }
     }
   }
@@ -162,6 +169,7 @@ body {
       border: none;
       outline: none;
       padding-left: 20px;
+      background-color: var(--searchBox);
     }
     input::-webkit-input-placeholder {
       background-image: url("../public/img/loupe.png");
@@ -183,6 +191,7 @@ body {
     font-weight: 500;
     font-size: 16px;
     line-height: 40px;
+    color: var(--fontColor);
   }
   .listWrap {
     grid-template-columns: repeat(6, 2fr);
@@ -194,7 +203,7 @@ body {
     transform: translateX(-50%);
   }
   .list {
-    background-color: #fff;
+    background-color: var(--listBox);
     width: 200px;
     height: 250px;
     border-radius: 8px;
@@ -208,6 +217,7 @@ body {
     .listTitle {
       font-weight: 500;
       padding: 10px 0 5px 0;
+      color: var(--fontColor);
     }
     .inrText {
       display: -webkit-box;
@@ -252,6 +262,7 @@ body {
 
 .nickname {
   font-size: 13px;
+  color: var(--fontColor);
   span {
     display: block;
   }
@@ -267,9 +278,11 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 30px);
   margin-top: 70px;
-  background-color: #f5f5fb;
+  background-color: var(--sideListBox);
+  color: var(--fontColor);
   border-radius: 8px;
   padding: 15px 0;
+
   p {
     text-align: center;
   }
@@ -639,7 +652,7 @@ body {
 }
 .listView {
   margin: 30px;
-  background-color: #ecebfd;
+  background-color: var(--listView);
   padding: 20px 5px;
   border-radius: 10px;
   display: flex;

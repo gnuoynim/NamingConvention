@@ -1,13 +1,19 @@
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../store";
+import { setDarkmode } from "../store/reducers/darkmode-reducer";
 
 
 const DarkmodeComponent = () => {
+  const darkmode = useSelector((state: RootState) => state.darkmode);
+  const dispatch = useAppDispatch();
   const [isDarkMode, setDarkMode] = React.useState(false);
+  const [mode, setMode] = useState(true);
+
 
   const toggleDarkMode = (checked: boolean) => {
     setDarkMode(checked);
-
     const body = document.getElementsByTagName("body")[0];
     if (isDarkMode == true) {
       body.setAttribute("data-theme", "light");

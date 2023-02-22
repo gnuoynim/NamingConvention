@@ -14,7 +14,6 @@ const Login = () => {
     dispatch(setEmail("abcdefg@nkakao.com"))
     router.push("/nickname");
    
-    
   };
   return (
     <div>
