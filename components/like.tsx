@@ -17,7 +17,7 @@ const Like = ({ index }: { index: number }) => {
       <div className="progress">
         <p className="like">
           <img src="img/like.png" onClick={handleIncrement} />
-          {convention.filter((_,i) => i === index)[0].like}
+          {/* {convention.filter((_,i) => i === index)[0].like} */}
           {convention[index].like}
         </p>
       </div>

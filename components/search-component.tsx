@@ -7,6 +7,7 @@ import Wordinterface from "../interface/word-interface";
 import { useEffect } from "react";
 import axios from "axios";
 
+
 const SearchComponent = () => {
   const [value, setValue] = useState("");
   const [words, setWords] = useState<Wordinterface[]>([]);
@@ -27,7 +28,6 @@ const SearchComponent = () => {
           }
         )
         .then(function (response) {
-
           setWords(
             response.data.data.translations.map(
               (i: { translatedText: string }, index: number) => {
@@ -46,17 +46,14 @@ const SearchComponent = () => {
   return (
     <Autocomplete
       getItemValue={(item) => item.label}
-      items={words} 
+      items={words}
       renderItem={(item, isHighlighted) => (
-        <div
-          style={{ background: isHighlighted ? "lightgray" : "white" }}
-          key={item.label}
-        >
+        <div style={{ background: isHighlighted ? "lightgray" : "white" }} key={item.label}>
           {item.label}
         </div>
       )}
       renderInput={(props) => (
-        <input {...props} type="search" placeholder="단어를 검색하세요." />
+        <input {...props} type="search" placeholder="단어를 검색하세요."/>
       )}
       value={value}
       onChange={handleKeypress}

@@ -182,7 +182,7 @@ const Register = () => {
                   {depth.map((item, index) => {
                     return (
                       <li key={item.id + item.text}>
-                        {keyword}
+                        <p>{keyword}</p>
                         <DepthBoxComponent
                           scale={item.text}
                           index={index}

@@ -19,8 +19,8 @@ const List = () => {
       <h2>최근 가장 많이 검색된 단어</h2>
       <div className="listWrap">
         {convention.map((item, index) => (
-          <>
-            <div className="list">
+          <div key={item.depth[index].id}>
+            <div className="list" >
               <div onClick={handleClickView}>
                 <div className="nickname">
                   <img src="img/emoji.jpeg" />
@@ -34,7 +34,7 @@ const List = () => {
               </div>
               <Like index={index} />
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>

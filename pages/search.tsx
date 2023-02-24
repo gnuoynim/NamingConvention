@@ -1,5 +1,5 @@
 import BaseLayout from "../layout/base-layout";
-import Autocomplete from "react-autocomplete";
+
 
 const Search = () => {
   return (

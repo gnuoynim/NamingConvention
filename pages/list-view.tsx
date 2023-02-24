@@ -13,7 +13,7 @@ const ListView = () => {
   return (
     <BaseLayout>
       {convention.map((item, index) => (
-        <>
+        <div key={item.depth[index].id}>
           <div className="listView">
             <div className="nickname">
               <img src="img/emoji2.png" />
@@ -24,16 +24,14 @@ const ListView = () => {
               <span className="badge">{item.name}</span>
               <span className="countBadge">{item.depth.length}</span>
               <ul>
-                {conventionGenerator(item).map((i) => (
-                  <>
-                    <li>{i.content}</li>
-                  </>
+                {conventionGenerator(item).map((i, index) => (
+                  <li key={index}>{i.content}</li>
                 ))}
               </ul>
               <Like index={index} />
             </div>
           </div>
-        </>
+        </div>
       ))}
     </BaseLayout>
   );

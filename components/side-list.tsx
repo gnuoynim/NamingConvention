@@ -12,7 +12,6 @@ const SideList = () => {
       url: "/api/popular-keyword",
       responseType: "json",
     }).then(function (res) {
-      console.log(res);
       setState(res.data)
     });
   }, []);

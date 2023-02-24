@@ -81,7 +81,7 @@ const initialState: ConventionInterface[] = [
         text: "content5",
       },
     ],
-    like: 3,
+    like: 2,
   },
   {
     keyword: "melon",
@@ -108,7 +108,7 @@ const initialState: ConventionInterface[] = [
         text: "content5",
       },
     ],
-    like: 4,
+    like: 3,
   },
 ];
 
@@ -122,7 +122,7 @@ const conventionReducer = createSlice({
     },
     increment:(state, action) =>{
       state[action.payload].like++;
-  
+      return state;
     }
   },
 });

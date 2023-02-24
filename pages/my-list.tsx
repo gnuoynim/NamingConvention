@@ -66,7 +66,7 @@ const MyList = () => {
             {convention.map((item, index) => (
               <li>
                 <>
-                  <div className="content">
+                  <div className="content" key={item.depth[index].id}>
                     <div className="contentBox">
                       <div className="contentTitle">
                         <p>{item.keyword}</p>
