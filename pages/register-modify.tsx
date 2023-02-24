@@ -31,7 +31,6 @@ const RegisterModify = () => {
         id: item.dataset.id!.toString(),
       })
     );
-    console.log(dd);
     dispatch(setDepth(dd));
 
     let type = "";

@@ -32,10 +32,9 @@ const Register = () => {
       dd.push({
         text: item.value,
         id: item.dataset.id!.toString(),
-        // like: 0,
       })
     );
-    console.log(dd);
+
     dispatch(setDepth(dd));
 
     let type = "";

@@ -7,7 +7,7 @@ import { setConvention } from "../store/reducers/convention-reducer";
 import Router, { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import ConventionInterface from "../interface/convention-interface";
-
+import conventionGenerator from "../helpers/convention-generator";
 
 const RegisterComplete = () => {
   const state = useSelector((state: RootState) => state.state);
@@ -18,36 +18,6 @@ const RegisterComplete = () => {
 
   const handleClickModify = () => {
     router.push("./register-modify");
-  };
-
-  const nameList = (item: ConventionInterface) => {
-    return item.depth.map((i) => {
-      let content = "";
-      switch (item.name) {
-        case "snake_casing":
-          content = `${item.keyword} _ ${i.text}`;
-          console.log(content);
-          break;
-        case "camelCasing":
-          content = `${item.keyword
-            .charAt(0)
-            .toLowerCase()}${item.keyword.slice(1, item.keyword.length)} ${
-            i.text
-          }`;
-          break;
-        case "PascalCase":
-          content = `${item.keyword
-            .charAt(0)
-            .toUpperCase()}${item.keyword.slice(1, item.keyword.length)} ${
-            i.text
-          }`;
-          break;
-        case "kebab-case":
-          content = `${item.keyword} - ${i.text}`;
-          break;
-      }
-      return <span>{content}</span>;
-    });
   };
 
   const handleClickDelete = (index: number) => {
@@ -67,8 +37,8 @@ const RegisterComplete = () => {
           </div>
           <ul>
             {convention.map((item, index) => (
-              <li>
-                <>
+              <li key={item.depth[index].id}>
+                <div>
                   <div className="content">
                     <div className="contentBox">
                       <div className="contentTitle">
@@ -88,12 +58,12 @@ const RegisterComplete = () => {
                         </button>
                       </div>
                     </div>
-                    <p>{nameList(item)}</p>
+                    <p>{conventionGenerator(item).map((i) => i.content)}</p>
                   </div>
                   <div className="likeWrap">
                     <span>2days ago</span>
                   </div>
-                </>
+                </div>
               </li>
             ))}
           </ul>

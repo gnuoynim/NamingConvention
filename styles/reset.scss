@@ -97,10 +97,15 @@ video {
   --tabMenu: #826df5;
   --title: #1c1e26;
   --sideHover: #f7f5fd;
-  --listBox:#fff;
-  --searchBox :#fff;
-  --sideListBox :#f5f5fb;
-  --listView:#ecebfd;
+  --listBox: #fff;
+  --searchBox: #fff;
+  --sideListBox: #f5f5fb;
+  --listView: #ecebfd;
+  --bookmarkList: #e3e3f9;
+  --bookLine:#573af5;
+  --bookHover:#573af5;
+  --bookHoverShadow:rgb(92 24 195 / 10%);
+  --bookChecked:#573af5;
 }
 
 [data-theme="light"] {
@@ -115,7 +120,12 @@ video {
   --title: #fff;
   --fontColor: #fff;
   --sideHover: #c8c6d314;
-  --searchBox : #1c1e26;
-  --sideListBox:#573AF5;
-  --listView:#c8c6d314;
+  --searchBox: #1c1e26;
+  --sideListBox: #573af5;
+  --listView: #c8c6d314;
+  --bookmarkList: #191933;
+  --bookLine:#ee9ca7;
+  --bookHover:#ee9ca7;
+  --bookHoverShadow:rgba(238, 156, 167, 0.2);
+  --bookChecked:#ee9ca7;
 }

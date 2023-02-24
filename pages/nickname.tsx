@@ -2,7 +2,7 @@ import JoinLayout from "../layout/join-layout";
 import Router, { useRouter } from "next/router";
 import { useState } from "react";
 import { RootState, useAppDispatch } from "../store";
-import { ReactReduxContext, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import userReducer, { setNickname } from "../store/reducers/user-reducer";
 
 

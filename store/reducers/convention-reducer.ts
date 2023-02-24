@@ -120,12 +120,16 @@ const conventionReducer = createSlice({
       state = action.payload;
       return state;
     },
-    increment:(state, action) =>{
+    increment: (state, action) => {
       state[action.payload].like++;
       return state;
-    }
+    },
+    remove: (state, action) => {
+      state.splice(action.payload, 1);
+
+    },
   },
 });
 
-export const { setConvention,increment } = conventionReducer.actions;
+export const { setConvention, increment, remove } = conventionReducer.actions;
 export default conventionReducer.reducer;
