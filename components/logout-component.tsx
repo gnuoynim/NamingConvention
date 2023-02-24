@@ -4,11 +4,36 @@ import SideList from "./side-list";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { setEmail } from "../store/reducers/user-reducer";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 const LogoutComponent = () => {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
+  const [img, setImg] = useState("");
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "https://api.unsplash.com/photos/?client_id=Ft-vTqCsJU0N5_SVPIllf5hsaE0grdtcjbkkF76b6UU",
+      data: {},
+      responseType: "json",
+      headers: {
+        Authorization: "Ft-vTqCsJU0N5_SVPIllf5hsaE0grdtcjbkkF76b6UU",
+      },
+    }).then((response) => {
+      const img = response.data;
+      console.log(img);
+      setImg(
+        img.map((i: any) => {
+          return i.urls.small;
+        })
+      );
+      console.log(img[0].urls.small);
+    });
+  }, []);
 
   const handleClickLogout = () => {
     dispatch(setEmail(""));
@@ -26,9 +51,7 @@ const LogoutComponent = () => {
   return (
     <div className="sideBar">
       <div className="loginNickname">
-        <span>
-          <img src="img/emoji2.png" />
-        </span>
+        <img src={img} />
         <span className="nickname">{user.nickname}</span>
       </div>
       <ul>
