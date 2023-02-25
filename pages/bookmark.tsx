@@ -3,18 +3,22 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../store";
 import { RootState } from "../store";
 import { remove } from "../store/reducers/convention-reducer";
-import ConventionInterface from "../interface/convention-interface";
+import { removeLike } from "../store/reducers/user-reducer";
 import SearchComponent from "../components/search-component";
 
 const Bookmark = () => {
   const convention = useSelector((state: RootState) => state.convention);
-  const state = useSelector((state: RootState)=>state.state);
+  const state = useSelector((state: RootState) => state.state);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
 
+  const handleClickAdd=()=>{
+    
+  }
   const handleClickRemove = () => {
-    dispatch(remove(convention));
-    console.log(convention);
+    dispatch(removeLike(user));
   };
+
 
   return (
     <BaseLayout>
@@ -28,15 +32,20 @@ const Bookmark = () => {
             </div>
           </div>
           <ul>
-            {convention.map((item, index) => (
-              <li key={index}>
-                <label className="">
-                  <input type="checkbox" />
-                  <span>{item.keyword}</span>
-                </label>
-                <span className="deleteBtn" onClick={handleClickRemove}></span>
-              </li>
-            ))}
+            {convention
+              .filter((_, index) => user.like.includes(index))
+              .map((item, index) => (
+                <li key={index}>
+                  <label className="">
+                    <input type="checkbox" />
+                    <span>{item.keyword}</span>
+                  </label>
+                  <span
+                    className="deleteBtn"
+                    onClick={handleClickRemove}
+                  ></span>
+                </li>
+              ))}
           </ul>
         </div>
         <div>

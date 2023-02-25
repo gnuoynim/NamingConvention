@@ -54,7 +54,7 @@ const initialState: ConventionInterface[] = [
         text: "content5",
       },
     ],
-    like: 1,
+    like: 88888,
   },
   {
     keyword: "list",

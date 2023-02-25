@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
-import Router from "next/router";
 import SideList from "./side-list";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { setEmail } from "../store/reducers/user-reducer";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState} from "react";
 import axios from "axios";
+
 
 const LogoutComponent = () => {
   const router = useRouter();
@@ -25,13 +24,11 @@ const LogoutComponent = () => {
       },
     }).then((response) => {
       const img = response.data;
-      console.log(img);
       setImg(
         img.map((i: any) => {
           return i.urls.small;
         })
       );
-      console.log(img[0].urls.small);
     });
   }, []);
 

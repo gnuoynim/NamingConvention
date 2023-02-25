@@ -1,6 +1,8 @@
 interface UserInterface{
     nickname :string;
     email:string;
+    like : number[];
+    often : string[];
 
 }
 
