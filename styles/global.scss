@@ -134,6 +134,14 @@ body {
       background-size: contain;
     }
   }
+  .list{
+    @include loginIcon;
+    &::after {
+      content: "";
+      background: url("../public/img/list.png") no-repeat;
+      background-size: contain;
+    }
+  }
   .myList {
     @include loginIcon;
     &::after {
@@ -419,21 +427,20 @@ body {
 }
 .loginNickname {
   margin-bottom: 30px;
-  img{
+  img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin: 0 auto;
     display: block;
   }
-  
+
   span {
     display: block;
     width: fit-content;
     margin: 0 auto;
     text-align: center;
     padding-top: 10px;
-   
   }
 }
 
@@ -839,7 +846,71 @@ body {
     }
   }
 }
-
+.languageType {
+  background-color: var(--white);
+  margin: 20px;
+  display: flex;
+  position: relative;
+  height: 100%;
+  .language {
+    width: 100%;
+    li {
+      display: flex;
+      background-color: #e8e8faa1;
+      height: 100px;
+      cursor: pointer;
+      border-bottom: 1px solid #edecee;
+      margin-bottom: 3px;
+      .type {
+        padding: 10px 20px;
+        span {
+          font-size: 20px;
+          font-weight: 600;
+          color: #4a495c;
+        }
+        p {
+          color: #6c6b81;
+        }
+        p.explain {
+          font-size: 12px;
+          color: #c7c7cb;
+          width: 73%;
+        }
+      }
+    }
+    li.on {
+      background-color: #fff;
+      cursor: auto;
+      &::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 2px;
+        background-color: #775dc2;
+      }
+    }
+  }
+  .tag {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #5b46ce;
+    color: #fff;
+  }
+  .contents {
+    width: 60%;
+    height: 100%;
+    background-color: #212121;
+    position: absolute;
+    right: 0;
+    li {
+      color: #c8e596;
+      span {
+        color: #bd93e1;
+      }
+    }
+  }
+}
 button {
   cursor: pointer;
 }

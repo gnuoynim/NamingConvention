@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ConventionInterface from "../../interface/convention-interface";
 
-const initialState: ConventionInterface[] = [
+const initialState: ConventionInterface[] = [];
+
+const loginInitialState: ConventionInterface[] = [
   {
     keyword: "container",
     name: "snake_casing",
@@ -120,16 +122,22 @@ const conventionReducer = createSlice({
       state = action.payload;
       return state;
     },
+    setConventionModify: (state, action) => {
+      state[action.payload.index].depth = action.payload.depth;
+      state[action.payload.index].name = action.payload.name;
+
+    },
     increment: (state, action) => {
       state[action.payload].like++;
       return state;
     },
     remove: (state, action) => {
       state.splice(action.payload, 1);
-
     },
   },
 });
 
-export const { setConvention, increment, remove } = conventionReducer.actions;
+export const { setConvention, increment, remove, setConventionModify } =
+  conventionReducer.actions;
 export default conventionReducer.reducer;
+export { loginInitialState };

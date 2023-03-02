@@ -2,11 +2,12 @@ import Autocomplete from "react-autocomplete";
 import React, { useState } from "react";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
-import { setKeyword } from "../store/reducers/state-reducer";
+import { setKeyword, setModalAlert } from "../store/reducers/state-reducer";
 import Wordinterface from "../interface/word-interface";
 import { useEffect } from "react";
 import axios from "axios";
 import { addOften, setOften } from "../store/reducers/user-reducer";
+import autocompleteFilter from "../helpers/autocomplete-filter";
 
 const SearchComponent = () => {
   const state = useSelector((state: RootState) => state.state);
@@ -15,8 +16,7 @@ const SearchComponent = () => {
   const [words, setWords] = useState<Wordinterface[]>([]);
   const [value, setValue] = useState("");
   const [eventOnce, setEventOnce] = useState(true);
-  const [oldValue, setOldValue] = useState("")
-
+  const [oldValue, setOldValue] = useState("");
 
   useEffect(() => {
     dispatch(setKeyword(value));
@@ -48,23 +48,20 @@ const SearchComponent = () => {
   };
   const handleOnkeypress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code == "Enter") {
-      if(oldValue === value){
-       setEventOnce(true)
+      if (oldValue === value) {
+        setEventOnce(true);
       }
       if (eventOnce) {
-        const engNum = /^[a-zA-Z0-9]*$/;
-        if (!engNum.test(value)) {
-          alert("영어로 입력해주세요");
-        } else {
-          if (!user.often.includes(value)) {
-            dispatch(addOften(value));
-          }
-        }
-        setOldValue(value)
-
+        autocompleteFilter(
+          value,
+          user.often,
+          dispatch,
+          addOften,
+          setModalAlert
+        );
+        setOldValue(value);
         setEventOnce(false);
       }
-
     } else {
       setEventOnce(true);
     }

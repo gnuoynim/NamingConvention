@@ -5,9 +5,10 @@ import { RootState, useAppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { setConvention } from "../store/reducers/convention-reducer";
 import Router, { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ConventionInterface from "../interface/convention-interface";
 import conventionGenerator from "../helpers/convention-generator";
+import { setConventionId, setKeyword } from "../store/reducers/state-reducer";
 
 const MyList = () => {
   const state = useSelector((state: RootState) => state.state);
@@ -16,12 +17,19 @@ const MyList = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const handleClickModify = () => {
+
+  const handleClickModify = (item: ConventionInterface, index: number) => {
+    dispatch(setKeyword(item.keyword));
+    dispatch(setConventionId(index));
+
     router.push("./register-modify");
   };
 
   const handleClickDelete = (index: number) => {
     dispatch(setConvention([...convention.filter((_, i) => index !== i)]));
+  };
+  const handleClickType = () => {
+    router.push("./language-type");
   };
 
   return (
@@ -37,9 +45,9 @@ const MyList = () => {
           </div>
           <ul>
             {convention.map((item, index) => (
-              <li key={item.depth[index].id}>
+              <li key={index}>
                 <>
-                  <div className="content" key={item.depth[index].id}>
+                  <div className="content" key={index}>
                     <div className="contentBox">
                       <div className="contentTitle">
                         <p>{item.keyword}</p>
@@ -47,7 +55,10 @@ const MyList = () => {
                         <span className="countBadge">{item.depth.length}</span>
                       </div>
                       <div className="buttonBox">
-                        <button type="button" onClick={handleClickModify}>
+                        <button
+                          type="button"
+                          onClick={() => handleClickModify(item, index)}
+                        >
                           수정
                         </button>
                         <button
@@ -55,6 +66,9 @@ const MyList = () => {
                           onClick={() => handleClickDelete(index)}
                         >
                           삭제
+                        </button>
+                        <button type="button" onClick={handleClickType}>
+                          type
                         </button>
                       </div>
                     </div>

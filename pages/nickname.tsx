@@ -3,11 +3,18 @@ import Router, { useRouter } from "next/router";
 import { useState } from "react";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
+import stateReducer from "../store/reducers/state-reducer";
+import { setModalConfirm } from "../store/reducers/state-reducer";
 import userReducer, { setNickname } from "../store/reducers/user-reducer";
+import {
+  loginInitialState,
+  setConvention,
+} from "../store/reducers/convention-reducer";
 
 const Nickname = () => {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user);
+  const state = useSelector((state: RootState) => state.state);
   const dispatch = useAppDispatch();
   const [value, setValue] = useState("");
   const [check, setCheck] = useState(false);
@@ -15,9 +22,10 @@ const Nickname = () => {
   const handleClickLogin = () => {
     dispatch(setNickname(value));
 
-    if (check == false) {
-      alert("중복을 확인해주세요");
+    if (check === false) {
+      dispatch(setModalConfirm("중복을 확인해주세요"));
     } else {
+      dispatch(setConvention(loginInitialState));
       Router.push("/");
     }
   };
@@ -35,7 +43,9 @@ const Nickname = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button type="button" onClick={handleClickCheck}>중복확인</button>
+          <button type="button" onClick={handleClickCheck}>
+            중복확인
+          </button>
         </div>
         <button
           type="button"

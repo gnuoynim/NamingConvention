@@ -1,7 +1,6 @@
 import ConventionInterface from "../interface/convention-interface";
 
 const conventionGenerator = (item: ConventionInterface) => {
-
   return item.depth.map((i) => {
     let content = "";
     switch (item.name) {

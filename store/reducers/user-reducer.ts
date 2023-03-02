@@ -29,7 +29,7 @@ const userReducer = createSlice({
       state.like = action.payload;
     },
     addLike(state, action){
-      state.like.push(action.payload)
+      state.like.push(action.payload);
     },
     removeLike(state, action) {
       state.like.splice(action.payload,1);
@@ -39,9 +39,12 @@ const userReducer = createSlice({
     },
     addOften(state, action){
       state.often.push(action.payload);
+    },
+    removeOften(state, action){
+      state.often.splice(action.payload, 1)
     }
   },
 });
 
-export const { setUser, setNickname, setEmail, setLike, addLike, removeLike, setOften, addOften } = userReducer.actions;
+export const { setUser, setNickname, setEmail, setLike, addLike, removeLike, setOften, addOften, removeOften } = userReducer.actions;
 export default userReducer.reducer;

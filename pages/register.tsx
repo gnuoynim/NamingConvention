@@ -7,8 +7,6 @@ import { useRouter } from "next/router";
 import DepthInterface from "../interface/depth-interface";
 import { setConvention } from "../store/reducers/convention-reducer";
 import { useEffect, useState } from "react";
-import { DragDropContext,Droppable, Draggable } from "react-beautiful-dnd";
-
 
 const Register = () => {
   const state = useSelector((state: RootState) => state.state);
@@ -18,8 +16,6 @@ const Register = () => {
   const router = useRouter();
   const [tab, setTab] = useState(0);
   const [keyword, setKeyword] = useState("");
-
-  
 
   const handleClickAdd = () => {
     dispatch(addDepth(depth));
@@ -64,7 +60,8 @@ const Register = () => {
       ])
     );
 
-    router.push("/register-complete");
+    // router.push("/register-complete");
+    router.push("/my-list");
   };
 
   useEffect(() => {

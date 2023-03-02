@@ -5,9 +5,8 @@ import { useSelector } from "react-redux";
 import { addDepth, setDepth } from "../store/reducers/depth-reducer";
 import { useRouter } from "next/router";
 import DepthInterface from "../interface/depth-interface";
-import { setConvention } from "../store/reducers/convention-reducer";
+import { setConventionModify } from "../store/reducers/convention-reducer";
 import { useEffect, useState } from "react";
-
 
 const RegisterModify = () => {
   const state = useSelector((state: RootState) => state.state);
@@ -15,6 +14,7 @@ const RegisterModify = () => {
   const convention = useSelector((state: RootState) => state.convention);
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const [loadOnce, setLoadOnce] = useState(true);
   const [tab, setTab] = useState(0);
   const [keyword, setKeyword] = useState("");
 
@@ -50,88 +50,99 @@ const RegisterModify = () => {
     }
 
     dispatch(
-      setConvention([
-        ...convention,
-        {
-          keyword: state.keyword,
-          name: type,
-          depth: dd,
-        },
-      ])
+      setConventionModify({
+        index: state.conventionId,
+        name: type,
+        depth: dd as DepthInterface[],
+      })
     );
 
-    router.push("/register-complete");
+    // router.push("/register-complete");
+    router.push("/my-list");
   };
 
   useEffect(() => {
-    switch (tab) {
-      case 0:
-        setKeyword(`${state.keyword}_`);
-        dispatch(
-          setDepth([
-            ...depth.map((item) => {
-              return {
-                id: item.id,
-                text: `${item.text.charAt(0).toLowerCase()}${item.text.slice(
-                  1,
-                  item.text.length
-                )}`,
-              };
-            }),
-          ])
-        );
-        break;
-      case 1:
-        setKeyword(state.keyword);
-        dispatch(
-          setDepth([
-            ...depth.map((item) => ({
-              id: item.id,
-              text: `${item.text.charAt(0).toUpperCase()}${item.text.slice(
-                1,
-                item.text.length
-              )}`,
-            })),
-          ])
-        );
-        break;
-      case 2:
-        setKeyword(
-          `${state.keyword.charAt(0).toUpperCase()}${state.keyword.slice(
-            1,
-            state.keyword.length
-          )}`
-        );
-        dispatch(
-          setDepth([
-            ...depth.map((item) => ({
-              id: item.id,
-              text: `${item.text.charAt(0).toUpperCase()}${item.text.slice(
-                1,
-                item.text.length
-              )}`,
-            })),
-          ])
-        );
-        break;
-      case 3:
-        setKeyword(`${state.keyword}-`);
-        dispatch(
-          setDepth([
-            ...depth.map((item) => {
-              return {
-                id: item.id,
-                text: `${item.text.charAt(0).toLowerCase()}${item.text.slice(
-                  1,
-                  item.text.length
-                )}`,
-              };
-            }),
-          ])
-        );
-        break;
+    console.log(state.conventionId);
+    if (state.conventionId) {
+      console.log(convention[state.conventionId]);
+      dispatch(setDepth(convention[state.conventionId].depth));
     }
-  }, [tab]);
+    setLoadOnce(false);
+  }, [state.conventionId]);
+
+  console.log(state, convention, depth);
+
+  useEffect(() => {
+    if (!loadOnce) {
+      switch (tab) {
+        case 0:
+          setKeyword(`${state.keyword}_`);
+          dispatch(
+            setDepth([
+              ...depth.map((item) => {
+                return {
+                  id: item.id,
+                  text: `${item.text.charAt(0).toLowerCase()}${item.text.slice(
+                    1,
+                    item.text.length
+                  )}`,
+                };
+              }),
+            ])
+          );
+          break;
+        case 1:
+          setKeyword(state.keyword);
+          dispatch(
+            setDepth([
+              ...depth.map((item) => ({
+                id: item.id,
+                text: `${item.text.charAt(0).toUpperCase()}${item.text.slice(
+                  1,
+                  item.text.length
+                )}`,
+              })),
+            ])
+          );
+          break;
+        case 2:
+          setKeyword(
+            `${state.keyword.charAt(0).toUpperCase()}${state.keyword.slice(
+              1,
+              state.keyword.length
+            )}`
+          );
+          dispatch(
+            setDepth([
+              ...depth.map((item) => ({
+                id: item.id,
+                text: `${item.text.charAt(0).toUpperCase()}${item.text.slice(
+                  1,
+                  item.text.length
+                )}`,
+              })),
+            ])
+          );
+          break;
+        case 3:
+          setKeyword(`${state.keyword}-`);
+          dispatch(
+            setDepth([
+              ...depth.map((item) => {
+                return {
+                  id: item.id,
+                  text: `${item.text.charAt(0).toLowerCase()}${item.text.slice(
+                    1,
+                    item.text.length
+                  )}`,
+                };
+              }),
+            ])
+          );
+          break;
+      }
+    }
+  }, [tab, loadOnce]);
 
   return (
     <BaseLayout>
@@ -197,7 +208,7 @@ const RegisterModify = () => {
             className="enrollButton enroll02"
             onClick={handleClickRegister}
           >
-            등록
+            수정
           </button>
         </div>
       </div>
