@@ -15,8 +15,7 @@ const SearchComponent = () => {
   const [words, setWords] = useState<Wordinterface[]>([]);
   const [value, setValue] = useState("");
   const [eventOnce, setEventOnce] = useState(true);
-  const [oldValue, setOldValue] = useState("")
-
+  const [oldValue, setOldValue] = useState("");
 
   useEffect(() => {
     dispatch(setKeyword(value));
@@ -48,8 +47,8 @@ const SearchComponent = () => {
   };
   const handleOnkeypress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code == "Enter") {
-      if(oldValue === value){
-       setEventOnce(true)
+      if (oldValue === value) {
+        setEventOnce(true);
       }
       if (eventOnce) {
         const engNum = /^[a-zA-Z0-9]*$/;
@@ -60,11 +59,10 @@ const SearchComponent = () => {
             dispatch(addOften(value));
           }
         }
-        setOldValue(value)
+        setOldValue(value);
 
         setEventOnce(false);
       }
-
     } else {
       setEventOnce(true);
     }
@@ -76,10 +74,11 @@ const SearchComponent = () => {
       items={words}
       renderItem={(item, isHighlighted) => (
         <div
-          style={{ background: isHighlighted ? "lightgray" : "white" }}
+          style={{ background: isHighlighted ? "lightgray" : "white" , padding:'10px 20px' }}
           key={item.label}
         >
           {item.label}
+          
         </div>
       )}
       renderInput={(props) => {

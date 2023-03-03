@@ -1,15 +1,16 @@
 import JoinLayout from "../layout/join-layout";
 import Router, { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import stateReducer from "../store/reducers/state-reducer";
 import { setModalConfirm } from "../store/reducers/state-reducer";
-import userReducer, { setNickname } from "../store/reducers/user-reducer";
+import userReducer, { setEmail, setNickname } from "../store/reducers/user-reducer";
 import {
   loginInitialState,
   setConvention,
 } from "../store/reducers/convention-reducer";
+import axios from "axios";
 
 const Nickname = () => {
   const router = useRouter();
@@ -32,6 +33,42 @@ const Nickname = () => {
   const handleClickCheck = () => {
     setCheck(true);
   };
+  console.log(router.query);
+  useEffect(() => {
+
+    if (router.query.code) {
+      console.log(router.query.code);
+      axios
+        .post(
+          "https://kauth.kakao.com/oauth/token",
+          {
+            grant_type: "authorization_code",
+            client_id: "7270da306046f8c3d3e7ad1ba11c2354",
+            redirect_uri: "http://localhost:3000/nickname",
+            code: router.query.code,
+            client_secret: "aiWYTyMMHIGO3sM6avJQeYTyanypX0fq",
+          },
+          {
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+            },
+          }
+        )
+        .then(function (res) {
+          console.log(res);
+          window.Kakao.Auth.setAccessToken(res.data.access_token);
+          window.Kakao?.API?.request({
+            url: "/v2/user/me",
+            data: {
+              property_keys: ["kakao_account.email", "kakao_account.gender"],
+            },
+          }).then(function (res:any) {
+            console.log(res.kakao_account.email)
+            dispatch(setEmail(res.kakao_account.email))
+          });
+        });
+    }
+  }, [router.query]);
 
   return (
     <JoinLayout>

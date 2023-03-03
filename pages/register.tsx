@@ -60,7 +60,6 @@ const Register = () => {
       ])
     );
 
-    // router.push("/register-complete");
     router.push("/my-list");
   };
 
@@ -143,57 +142,56 @@ const Register = () => {
             {state.keyword}
           </p>
           <div>
-            <div>
-              <p>탭을 선택해주세요.</p>
-              <div className="tabs">
-                <ul>
-                  <li
-                    className={tab === 0 ? "current" : ""}
-                    onClick={() => setTab(0)}
-                  >
-                    snake_casing
-                  </li>
-                  <li
-                    className={tab === 1 ? "current" : ""}
-                    onClick={() => setTab(1)}
-                  >
-                    camelCasing
-                  </li>
-                  <li
-                    className={tab === 2 ? "current" : ""}
-                    onClick={() => setTab(2)}
-                  >
-                    PascalCase
-                  </li>
-                  <li
-                    className={tab === 3 ? "current" : ""}
-                    onClick={() => setTab(3)}
-                  >
-                    kebab-case
-                  </li>
-                </ul>
-              </div>
-              <div id="tabContents">
-                <ul id="list">
-                  {depth.map((item, index) => {
-                    return (
-                      <li key={item.id + item.text}>
-                        <p>{keyword}</p>
-                        <DepthBoxComponent
-                          scale={item.text}
-                          index={index}
-                          id={item.id}
-                        />
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              <button type="button" onClick={handleClickAdd}>
-                +
-              </button>
+            <p className="tabText">탭을 선택해주세요.</p>
+            <div className="tabs">
+              <ul>
+                <li
+                  className={tab === 0 ? "current" : ""}
+                  onClick={() => setTab(0)}
+                >
+                  snake_casing
+                </li>
+                <li
+                  className={tab === 1 ? "current" : ""}
+                  onClick={() => setTab(1)}
+                >
+                  camelCasing
+                </li>
+                <li
+                  className={tab === 2 ? "current" : ""}
+                  onClick={() => setTab(2)}
+                >
+                  PascalCase
+                </li>
+                <li
+                  className={tab === 3 ? "current" : ""}
+                  onClick={() => setTab(3)}
+                >
+                  kebab-case
+                </li>
+              </ul>
             </div>
+            <div id="tabContents">
+              <ul id="list">
+                {depth.map((item, index) => {
+                  return (
+                    <li key={item.id + item.text}>
+                      <p>{keyword}</p>
+                      <DepthBoxComponent
+                        scale={item.text}
+                        index={index}
+                        id={item.id}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <button type="button" className="plusButton" onClick={handleClickAdd}>
+            +
+          </button>
           </div>
+
           <button
             className="enrollButton enroll02"
             onClick={handleClickRegister}

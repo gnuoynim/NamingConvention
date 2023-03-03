@@ -94,7 +94,7 @@ video {
   --white: #fff;
   --enrollButton: #826df5;
   --navBg: #fff;
-  --tabMenu: #826df5;
+  --tabMenu: #4b31d6;
   --title: #1c1e26;
   --sideHover: #f7f5fd;
   --listBox: #fff;
@@ -106,6 +106,7 @@ video {
   --bookHover:#573af5;
   --bookHoverShadow:rgb(92 24 195 / 10%);
   --bookChecked:#573af5;
+  --border:#f6f7f9;
 }
 
 [data-theme="light"] {
@@ -128,4 +129,5 @@ video {
   --bookHover:#ee9ca7;
   --bookHoverShadow:rgba(238, 156, 167, 0.2);
   --bookChecked:#ee9ca7;
+  --border:#1c1e26;
 }

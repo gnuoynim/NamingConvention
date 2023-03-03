@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import ConventionInterface from "../interface/convention-interface";
 import conventionGenerator from "../helpers/convention-generator";
 import { setConventionId, setKeyword } from "../store/reducers/state-reducer";
+import dayjs from "dayjs";
 
 const MyList = () => {
   const state = useSelector((state: RootState) => state.state);
@@ -17,11 +18,9 @@ const MyList = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-
   const handleClickModify = (item: ConventionInterface, index: number) => {
     dispatch(setKeyword(item.keyword));
     dispatch(setConventionId(index));
-
     router.push("./register-modify");
   };
 
@@ -31,18 +30,12 @@ const MyList = () => {
   const handleClickType = () => {
     router.push("./language-type");
   };
+  const day = dayjs(new Date()).format("YYYY-MM-DD HH:mm");
 
   return (
     <BaseLayout>
       <div>
         <div className="registerContent">
-          <div className="sort">
-            <span>sort by</span>
-            <select>
-              <option>최근 등록순</option>
-              <option>좋아요 많은순</option>
-            </select>
-          </div>
           <ul>
             {convention.map((item, index) => (
               <li key={index}>
@@ -67,16 +60,23 @@ const MyList = () => {
                         >
                           삭제
                         </button>
-                        <button type="button" onClick={handleClickType}>
-                          type
-                        </button>
                       </div>
                     </div>
-                    <p> {conventionGenerator(item).map((i) => i.content)}</p>
+                    <p>
+                      {conventionGenerator(item).map((i, index) => (
+                        <span key={index}>{i.content}</span>
+                      ))}
+                      <button
+                        type="button"
+                        className="typeButton"
+                        onClick={handleClickType}
+                      >
+                        {"</>"}
+                      </button>
+                    </p>
                   </div>
                   <div className="likeWrap">
-                    <span>2days ago</span>
-                    <Like index={index} />
+                    <span>{day}</span>
                   </div>
                 </>
               </li>

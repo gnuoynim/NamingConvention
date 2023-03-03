@@ -94,6 +94,7 @@ body {
     height: 70px;
     background-color: var(--navBg);
     z-index: -1;
+   
   }
 }
 .emptySpace {
@@ -134,12 +135,15 @@ body {
       background-size: contain;
     }
   }
-  .list{
+  .list {
     @include loginIcon;
     &::after {
       content: "";
       background: url("../public/img/list.png") no-repeat;
       background-size: contain;
+      width: 25px;
+      height: 25px;
+      left: -1px;
     }
   }
   .myList {
@@ -162,6 +166,7 @@ body {
 .contents {
   width: 100%;
   margin-left: 201px;
+
   .searchBox {
     position: relative;
     z-index: 10;
@@ -199,7 +204,7 @@ body {
   padding: 20px;
   h2 {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 40px;
     color: var(--fontColor);
   }
@@ -453,7 +458,7 @@ body {
   .registerWord {
     font-size: 28px;
     font-weight: 600;
-    color: #5b46ce;
+    color: #4b31d6;
   }
   .depthWrap {
     display: flex;
@@ -466,7 +471,7 @@ body {
     input {
       width: 60px;
       height: 30px;
-      border: 2px solid #d4d4ef;
+      border: 2px solid #9e9ef9a1;
       border-radius: 5px;
       text-align: center;
       text-indent: 13px;
@@ -479,35 +484,50 @@ body {
     }
     ul {
       li {
-        background-color: #d9d9f6;
-        margin-bottom: 15px;
-        padding: 15px 10px;
+        position: relative;
+        background-color: #ecebfd;
+        margin-bottom: 6px;
+        padding: 20px 10px;
         display: flex;
         align-items: center;
-
+        &:last-of-type {
+          margin-bottom: 0;
+        }
         p {
           font-size: 20px;
           margin-bottom: 0;
+          margin-left: 10px;
         }
         input {
           width: auto;
+          text-align: left;
+          font-size: 16px;
         }
       }
     }
     .variation {
-      display: flex;
-      justify-content: flex-end;
+      position: absolute;
+      right: 30px;
       button {
-        background-color: #fff;
-        border: 1px solid #d4d4ef;
+        border: none;
         border-radius: 5px;
         width: 30px;
         height: 30px;
         font-size: 16px;
-        color: #5b46ce;
+        color: #fff;
         margin-left: 5px;
+        background: rgba(158, 158, 249, 0.631372549);
+        box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+        outline: none;
+
       }
     }
+  }
+  .tabText {
+    color: var(--title);
+    text-align: left;
+    font-size: 18px;
+    margin: 20px 0;
   }
   .tabs {
     > ul {
@@ -517,16 +537,21 @@ body {
         color: var(--white);
         font-size: 20px;
         border-radius: 5px 5px 0 0;
-        margin-right: 5px;
+        margin-right: 1px;
         margin-bottom: 0;
         cursor: pointer;
+        &:last-of-type.current {
+          margin-left: -1px;
+        }
       }
       li.current {
+        font-weight: 600;
         margin-right: 0;
-        background-color: #f3eefb;
-        color: #8e6ff0;
-        border: 1px solid;
-        border-color: #826df5 #826df5 #d9d9f6;
+        background-color: #ecebfd;
+        color: #1e1d5b;
+        border: 2px solid;
+        border-color: #472dd5 #472dd5 #ecebfd;
+        border-bottom: none;
       }
     }
   }
@@ -534,35 +559,27 @@ body {
     position: relative;
     > ul {
       background-color: var(--bgColor);
-      // position: absolute;
-      width: 100%;
+      border-left: 2px solid #472dd5;
+      border-bottom: 2px solid #472dd5;
+      border-right: 2px solid #472dd5;
     }
   }
 }
 .registerContent {
   width: calc(100% - 150px);
   margin: 0 auto;
-  .sort {
-    display: flex;
-    justify-content: flex-end;
-    margin: 30px 0 20px 0;
-    span {
-      color: #9e84f1;
-      margin-right: 10px;
-    }
-  }
   ul > li {
     background-color: #fff;
     padding: 30px;
-
+    margin-top: 40px;
     box-sizing: border-box;
     border-radius: 10px;
     border: 2px solid #f3f3f3;
     margin-bottom: 20px;
-    &:hover {
-      border: 2px solid #5b46ce;
-      cursor: pointer;
-    }
+    // &:hover {
+    //   border: 2px solid #5b46ce;
+    //   cursor: pointer;
+    // }
   }
   .content {
     display: flex;
@@ -582,18 +599,24 @@ body {
     }
     .buttonBox {
       button {
-        border: 2px solid #c3baf2;
-        background-color: #f9f9f9;
+        border: 1px solid #e9e5fb;
+        background-color: #e9e5fb;
         cursor: pointer;
         padding: 3px 5px;
         border-radius: 5px;
-        color: #7c7387;
+        color: #573af5;
         font-weight: 600;
         margin-left: 5px;
+        box-sizing: border-box;
+        &:hover {
+          color: #fff;
+          background-color: #573af5;
+          border: 1px solid #573af5;
+        }
       }
     }
     > p {
-      color: #999;
+      color: #7f7f7f;
       letter-spacing: 0.7px;
       width: calc(100% - 50px);
       white-space: normal;
@@ -605,6 +628,17 @@ body {
       > span {
         display: inline-block;
         margin-right: 10px;
+      }
+      .typeButton {
+        background-color: #212121;
+        color: #ffd100;
+        border: none;
+        padding: 5px;
+        border-radius: 4px;
+        &:hover {
+          background-color: #ffd100;
+          color: #212121;
+        }
       }
     }
   }
@@ -748,9 +782,6 @@ body {
     left: 0;
     top: 0;
   }
-}
-.enrollButton.enroll02 {
-  margin: 0;
 }
 
 #bookmark {
@@ -913,4 +944,51 @@ body {
 }
 button {
   cursor: pointer;
+}
+.customButton {
+  font-size: 16px;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  margin-top: 50px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+  background: linear-gradient(0deg, #5b46ce 100%, #573af5 0%);
+  border: none;
+  &:hover {
+    background: linear-gradient(0deg, #573af5 0%, #5b46ce 100%);
+  }
+}
+.plusButton {
+  margin: 20px;
+  padding: 7px 13px;
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%),
+    7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+  outline: none;
+  background: linear-gradient(0deg, #5b46ce 100%, #573af5 0%);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+.enrollButton.enroll02 {
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+  outline: none;
+  background: linear-gradient(0deg, #5b46ce 100%, #573af5 0%);
+  border: none;
+  color: #fff;
 }

@@ -55,10 +55,18 @@ const LanguageType = () => {
   }, [tab]);
 
   const handleClickCopie = () => {
+    
     if (copyref.current?.innerText) {
-      alert("복사성공");
-      console.log(copyref.current?.innerText);
+
+      const range = document.createRange();
+      range.selectNode(copyref.current);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
       navigator.clipboard.writeText(copyref.current.innerText);
+      window.getSelection()?.removeAllRanges();
+
+      // alert("복사성공");
+      
     }
   };
 

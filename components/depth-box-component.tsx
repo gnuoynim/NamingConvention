@@ -12,7 +12,6 @@ const DepthBoxComponent = ({ scale = "", index, id = "" }: ScaleInterface) => {
 
   const handleClickRemove = () => {
     dispatch(removeDepth(index));
-    console.log(index);
   };
 
   return (

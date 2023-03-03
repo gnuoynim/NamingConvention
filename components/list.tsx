@@ -6,6 +6,7 @@ import { RootState, useAppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import conventionGenerator from "../helpers/convention-generator";
 
+
 const List = () => {
   const convention = useSelector((state: RootState) => state.convention);
   const dispatch = useAppDispatch();
@@ -13,13 +14,15 @@ const List = () => {
   const handleClickView = () => {
     router.push("/list-view");
   };
+  const day = dayjs(new Date()).format('YYYY-MM-DD HH:mm');
+
 
   return (
     <div className="mainList">
-      <h2>최근 가장 많이 검색된 단어</h2>
+      <h2>최근 검색등록된 단어</h2>
       <div className="listWrap">
         {convention.map((item, index) => (
-          <div key={item.depth[index].id}>
+          <div key={index}>
             <div className="list" >
               <div onClick={handleClickView}>
                 <div className="nickname">
@@ -30,7 +33,7 @@ const List = () => {
                 <p className="inrText">
                   {conventionGenerator(item).map((i) => i.content)}
                 </p>
-                <p className="registrationDate">20days ago</p>
+                <p className="registrationDate">{day}</p>
               </div>
               <Like index={index} />
             </div>

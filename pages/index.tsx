@@ -4,7 +4,6 @@ import SearchComponent from "../components/search-component";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-
 const Index = () => {
   const router = useRouter();
   const [isShown, setIsShown] = useState(true);
@@ -16,8 +15,6 @@ const Index = () => {
     setIsShown(false);
   };
 
-
-
   return (
     <BaseLayout>
       <div className="searchBox" onClick={onClickDisplay}>
@@ -25,7 +22,7 @@ const Index = () => {
       </div>
       <button
         type="button"
-        className="enrollButton"
+        className="customButton"
         onClick={handleClickRegister}
         style={{ display: isShown ? "none" : "block" }}
       >
