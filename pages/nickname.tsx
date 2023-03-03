@@ -5,7 +5,10 @@ import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import stateReducer from "../store/reducers/state-reducer";
 import { setModalConfirm } from "../store/reducers/state-reducer";
-import userReducer, { setEmail, setNickname } from "../store/reducers/user-reducer";
+import userReducer, {
+  setEmail,
+  setNickname,
+} from "../store/reducers/user-reducer";
 import {
   loginInitialState,
   setConvention,
@@ -33,9 +36,7 @@ const Nickname = () => {
   const handleClickCheck = () => {
     setCheck(true);
   };
-  console.log(router.query);
   useEffect(() => {
-
     if (router.query.code) {
       console.log(router.query.code);
       axios
@@ -62,12 +63,41 @@ const Nickname = () => {
             data: {
               property_keys: ["kakao_account.email", "kakao_account.gender"],
             },
-          }).then(function (res:any) {
-            console.log(res.kakao_account.email)
-            dispatch(setEmail(res.kakao_account.email))
+          }).then(function (res: any) {
+            console.log(res.kakao_account.email);
+            dispatch(setEmail(res.kakao_account.email));
           });
         });
     }
+    if (window.location.href.includes("access_token")) {
+      const naverLogin = new window.naver.LoginWithNaverId({
+        clientId: "BMdY7jIrDUpcMpKkB06t",
+        callbackUrl: "http://localhost:3000/nickname",
+        callbackHandle: true,
+      });
+      naverLogin.init();
+
+      naverLogin.getLoginStatus(function (status: any) {
+        if (status) {
+          console.log(naverLogin.user.email);
+          dispatch(setEmail(naverLogin.user.email));
+        }
+      });
+    }
+
+    // if (window.google.account_email) {
+    //   console.log("rr")
+    //   window.google.accounts.id.initialize({
+    //     client_id:
+    //       "929612726597-2km4n9td86u8rk6jngcsrndig4as7je7.apps.googleusercontent.com",
+    //     login_uri: "http://localhost:3000/",
+    //   });
+    //   window.google.accounts.id.prompt((notification:any) => {
+    //     if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+    //         // try next provider if OneTap is not displayed or skipped
+    //     }
+    // });
+    // }
   }, [router.query]);
 
   return (

@@ -13,6 +13,7 @@ specifiers:
   dayjs: ^1.11.7
   eslint: 8.31.0
   eslint-config-next: 13.1.1
+  jwt-decode: ^3.1.2
   next: 13.1.1
   node-sass: ^8.0.0
   react: 18.2.0
@@ -40,6 +41,7 @@ dependencies:
   dayjs: 1.11.7
   eslint: 8.31.0
   eslint-config-next: 13.1.1_iukboom6ndih5an6iafl45j2fe
+  jwt-decode: 3.1.2
   next: 13.1.1_m5u5qwctvp6pdrmxyx6qbacvee
   node-sass: 8.0.0
   react: 18.2.0
@@ -2307,6 +2309,10 @@ packages:
     dependencies:
       array-includes: 3.1.6
       object.assign: 4.1.4
+    dev: false
+
+  /jwt-decode/3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
     dev: false
 
   /kind-of/6.0.3:
