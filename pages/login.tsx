@@ -5,8 +5,6 @@ import { useSelector } from "react-redux";
 import { setEmail } from "../store/reducers/user-reducer";
 import jwt_decode from "jwt-decode";
 import { useEffect } from "react";
-// import { google } from "googleapis";
-
 
 const Login = () => {
   const router = useRouter();
@@ -37,19 +35,9 @@ const Login = () => {
 
   useEffect(() => {
     const parent = document.getElementById("google_btn");
-
-    
-    /*
-    const oauth2Client = new google.auth.OAuth2(
-      "929612726597-2km4n9td86u8rk6jngcsrndig4as7je7.apps.googleusercontent.com",
-      "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",
-      "http://localhost:3000/nickname"
-    );
-    const url = oauth2Client.generateAuthUrl();
-    console.log(url);
-    */
-    
-
+    window.google.accounts.id.renderButton(parent, {
+      width: "338",
+    });
     window.google.accounts.id.initialize({
       client_id:
         "929612726597-2km4n9td86u8rk6jngcsrndig4as7je7.apps.googleusercontent.com",
@@ -64,23 +52,8 @@ const Login = () => {
         router.push("/nickname");
       },
     });
-
-    window.google.accounts.id.renderButton(parent, {
-      type: "standard",
-      text: "구글로그인",
-      width: "300",
-    });
   }, []);
 
-  // const handleClickGoogle = () => {
-  //   const btn = document.getElementById("google_btn") as HTMLDivElement;
-
-  //   const parent = document.querySelector(
-  //     "#google_btn iframe"
-  //   ) as HTMLIFrameElement;
-  //   (parent.querySelector('[role="button"]') as HTMLDivElement).click();
-  //   console.log(parent.contentWindow);
-  // };
   return (
     <div>
       <JoinLayout>
@@ -92,11 +65,9 @@ const Login = () => {
             <button type="button" onClick={handleClickNaver}>
               <span>네이버 로그인</span>
             </button>
-            <button id="ggg" type="button">
-              <span> 구글 로그인</span>
+            <button id="google_btn">
+              <span></span>
             </button>
-            <div id="google_btn"></div>
-
             <button type="button" onClick={handleClickLogin}>
               test
             </button>

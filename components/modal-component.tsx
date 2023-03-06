@@ -21,10 +21,10 @@ const ModalComponent = () => {
 
   return (
     <div>
-      <Modal show={state.modal.show} onHide={handleHide}>
+      <Modal show={state.modal.show} onHide={handleHide} id="modal">
         {state.modal.title === "" ? null : (
-          <Modal.Header closeButton>
-            <Modal.Title>{state.modal.title}</Modal.Title>
+          <Modal.Header closeButton className="modalHeader">
+            <Modal.Title className="title">{state.modal.title}</Modal.Title>
           </Modal.Header>
         )}
         <Modal.Body>{state.modal.content}</Modal.Body>
@@ -35,7 +35,7 @@ const ModalComponent = () => {
             </Button>
           ) : null}
           {state.modal.confirm ? (
-            <Button variant="primary" onClick={handleHide}>
+            <Button className="modalButton" onClick={handleHide}>
               확인
             </Button>
           ) : null}

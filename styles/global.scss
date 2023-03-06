@@ -415,7 +415,7 @@ body {
       box-sizing: border-box;
       border: none;
     }
-    button {
+    >button {
       width: 100px;
       height: 35px;
       background-color: #eae7fb;
@@ -423,20 +423,37 @@ body {
       cursor: pointer;
       color: #5b46ce;
       font-weight: 600;
+      margin-left: 1px;
+      &:hover{
+        background:#9583fc;
+        color: #fff;
+      }
     }
   }
+
   > button {
-    width: 80px;
-    height: 40px;
-    background-color: #826df5;
+    position: relative;
     border: none;
+    background: #573af5;
+    background: linear-gradient(20deg, #573af5 0%, #7b3fe5 100%);
+    box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
     color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: 600;
-    margin: 0 auto;
+    overflow: hidden;
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+      opacity: 0.7;
+    }
+    &:active {
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+        -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+    }
+   
   }
 }
+
 .loginNickname {
   margin-bottom: 30px;
   img {
@@ -981,13 +998,13 @@ h2.tag {
   }
   .codeBox {
     padding: 30px 25px;
-    >div{
+    > div {
       display: grid;
       grid-template-columns: auto auto auto;
       text-align: left;
-     >div{
-      margin-right: 10px;
-     }
+      > div {
+        margin-right: 10px;
+      }
     }
     .keywordBox {
       margin-bottom: 5px;
@@ -1063,3 +1080,11 @@ button {
   color: #fff;
 }
 
+.modalButton {
+  background-color: #712cf9;
+  color: #fff;
+  border: none;
+  width: 90px;
+  height: 40px;
+  border-radius: 6px;
+}
