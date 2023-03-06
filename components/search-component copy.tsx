@@ -9,7 +9,7 @@ import axios from "axios";
 import { addOften, setOften } from "../store/reducers/user-reducer";
 import autocompleteFilter from "../helpers/autocomplete-filter";
 
-const SearchComponent = () => {
+const SearchComponentCopy = () => {
   const state = useSelector((state: RootState) => state.state);
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
@@ -96,4 +96,4 @@ const SearchComponent = () => {
   );
 };
 
-export default SearchComponent;
+export default SearchComponentCopy;

@@ -24,14 +24,14 @@ const RegisterModify = () => {
 
   const handleClickRegister = () => {
     const contents = document.querySelectorAll<HTMLInputElement>("#list input");
-    const dd: DepthInterface[] = [];
+    const entry: DepthInterface[] = [];
     contents.forEach((item) =>
-      dd.push({
+      entry.push({
         text: item.value,
         id: item.dataset.id!.toString(),
       })
     );
-    dispatch(setDepth(dd));
+    dispatch(setDepth(entry));
 
     let type = "";
     switch (tab) {
@@ -48,12 +48,11 @@ const RegisterModify = () => {
         type = "kebab-case";
         break;
     }
-
     dispatch(
       setConventionModify({
         index: state.conventionId,
         name: type,
-        depth: dd as DepthInterface[],
+        depth: entry as DepthInterface[],
       })
     );
     router.push("/my-list");
@@ -193,7 +192,11 @@ const RegisterModify = () => {
                 })}
               </ul>
             </div>
-            <button type="button" onClick={handleClickAdd}>
+            <button
+              type="button"
+              className="plusButton"
+              onClick={handleClickAdd}
+            >
               +
             </button>
           </div>

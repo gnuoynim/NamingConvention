@@ -85,19 +85,7 @@ const Nickname = () => {
       });
     }
 
-    // if (window.google.account_email) {
-    //   console.log("rr")
-    //   window.google.accounts.id.initialize({
-    //     client_id:
-    //       "929612726597-2km4n9td86u8rk6jngcsrndig4as7je7.apps.googleusercontent.com",
-    //     login_uri: "http://localhost:3000/",
-    //   });
-    //   window.google.accounts.id.prompt((notification:any) => {
-    //     if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-    //         // try next provider if OneTap is not displayed or skipped
-    //     }
-    // });
-    // }
+
   }, [router.query]);
 
   return (

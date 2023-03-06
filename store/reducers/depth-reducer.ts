@@ -6,27 +6,22 @@ const initialState: DepthInterface[] = [
   {
     id: "1",
     text: "content",
-
   },
   {
     id: "2",
     text: "content2",
-
   },
   {
     id: "3",
     text: "content3",
-
   },
   {
     id: "4",
     text: "content4",
-
   },
   {
     id: "5",
     text: "content5",
-
   },
 ];
 const depthReducer = createSlice({
@@ -49,6 +44,5 @@ const depthReducer = createSlice({
   },
 });
 
-export const { setDepth, removeDepth, addDepth, setText } =
-  depthReducer.actions;
+export const { setDepth, removeDepth, addDepth, setText } = depthReducer.actions;
 export default depthReducer.reducer;

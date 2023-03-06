@@ -1,9 +1,8 @@
-import DepthInterface from "./depth-interface";
-
 interface LanguageInterface {
-  tab: number;
-  variable: string;
-  depth: DepthInterface[];
+  tab?: number;
+  variable?: string;
+  id?: string;
+  class?: string;
 }
 
 export default LanguageInterface;

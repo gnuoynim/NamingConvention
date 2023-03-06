@@ -6,6 +6,8 @@ interface ConventionInterface {
   depth: DepthInterface[];
   like:number;
   tab:number;
+  order : number;
+  
 }
 
 export default ConventionInterface;

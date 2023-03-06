@@ -27,7 +27,9 @@ const MyList = () => {
   const handleClickDelete = (index: number) => {
     dispatch(setConvention([...convention.filter((_, i) => index !== i)]));
   };
-  const handleClickType = () => {
+  const handleClickType = (item: ConventionInterface, index: number) => {
+    dispatch(setKeyword(item.keyword));
+    dispatch(setConventionId(index));
     router.push("./language-type");
   };
   const day = dayjs(new Date()).format("YYYY-MM-DD HH:mm");
@@ -69,7 +71,7 @@ const MyList = () => {
                       <button
                         type="button"
                         className="typeButton"
-                        onClick={handleClickType}
+                        onClick={()=>handleClickType(item, index)}
                       >
                         {"</>"}
                       </button>

@@ -1,6 +1,6 @@
 import "../styles/global.scss";
 import "../styles/reset.scss";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../store";

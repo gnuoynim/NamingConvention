@@ -30,6 +30,8 @@ const loginInitialState: ConventionInterface[] = [
       },
     ],
     like: 0,
+    tab: 0,
+    order:0,
   },
   {
     keyword: "list",
@@ -56,7 +58,9 @@ const loginInitialState: ConventionInterface[] = [
         text: "content5",
       },
     ],
-    like: 88888,
+    like: 2,
+    tab: 1,
+    order:1,
   },
   {
     keyword: "list",
@@ -84,6 +88,8 @@ const loginInitialState: ConventionInterface[] = [
       },
     ],
     like: 2,
+    tab: 2,
+    order:3,
   },
   {
     keyword: "melon",
@@ -111,6 +117,8 @@ const loginInitialState: ConventionInterface[] = [
       },
     ],
     like: 3,
+    tab: 3,
+    order:3,
   },
 ];
 
@@ -125,7 +133,6 @@ const conventionReducer = createSlice({
     setConventionModify: (state, action) => {
       state[action.payload.index].depth = action.payload.depth;
       state[action.payload.index].name = action.payload.name;
-
     },
     increment: (state, action) => {
       state[action.payload].like++;

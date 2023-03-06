@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import SideList from "./side-list";
 
+
 const LoginComponent = () => {
+  const [init, setInit] = useState("")
   const router = useRouter();
   const handleClickLogin = () => {
     router.push("/login");
