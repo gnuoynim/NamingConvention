@@ -14,6 +14,7 @@ import {
   setConvention,
 } from "../store/reducers/convention-reducer";
 import axios from "axios";
+import { useRef } from "react";
 
 const Nickname = () => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const Nickname = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState("");
   const [check, setCheck] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClickLogin = () => {
     dispatch(setNickname(value));
@@ -84,9 +86,12 @@ const Nickname = () => {
         }
       });
     }
-
-
   }, [router.query]);
+
+  useEffect(() => {
+    
+    if (inputRef.current  !== null) inputRef.current.focus();
+  });
 
   return (
     <JoinLayout>
@@ -94,6 +99,7 @@ const Nickname = () => {
         <label>*닉네임을 입력해주세요</label>
         <div className="checkInput">
           <input
+            ref={inputRef}
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
