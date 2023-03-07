@@ -35,7 +35,6 @@ const stateReducer = createSlice({
       state.modal.confirm = false;
     },
     setModalConfirm(state, action) {
-
       state.modal.content = action.payload;
       state.modal.show = true;
       state.modal.confirm = true;

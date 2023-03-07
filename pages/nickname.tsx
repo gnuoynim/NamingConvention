@@ -89,9 +89,8 @@ const Nickname = () => {
   }, [router.query]);
 
   useEffect(() => {
-    
     if (inputRef.current  !== null) inputRef.current.focus();
-  });
+  },[]);
 
   return (
     <JoinLayout>

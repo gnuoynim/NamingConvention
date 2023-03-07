@@ -19,6 +19,9 @@ const Index = () => {
     <BaseLayout>
       <div className="searchBox" onClick={onClickDisplay}>
         <SearchComponent />
+        <span>
+          <img src="/img/information.png" />
+        </span>
       </div>
       <button
         type="button"
