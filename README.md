@@ -10,6 +10,7 @@
 <ol>
   <li>
     <h3>:hatched_chick: 검색 기능</h3>
+    <p>구글 번역기를 통해서 단어를 여어로 번역해, 영어 단어를 손쉽게 입력, autocomplete 기능을 통해서 단어를 자동완성할 수 있다.</p>
     <ul>
       <li> npm : autocomplete</li>
       <li> api : 구글 번역기</li>
