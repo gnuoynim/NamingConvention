@@ -16,7 +16,7 @@
     </ul>
   </li>
   <li>
-    <h3>:hatched_chick: 로그인 </h3>
+    <h3>:tulip: 로그인 </h3>
     <ul>
       <li> api : KakaoLoginApi</li>
       <li> api : NaverLoginApi</li>
@@ -26,7 +26,7 @@
    <li>
     <h3>:hatched_chick: 메인페이지</h3>
     <ul>
-      <li><img src="https://github.com/gnuoynim/NamingConvention/issues/1#issue-1616483139"></li>
+      <li><img width="1470" alt="img1" src="https://user-images.githubusercontent.com/80198577/223934322-2d212067-4378-4fb8-a93e-6b2f3335a261.png"/></li>
     </ul>
   </li>
   <li>
