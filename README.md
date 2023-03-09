@@ -20,7 +20,7 @@
   </li>
   <li>
     <h3>:tulip: 로그인 </h3>
-    <p>kakao, naver, google API 를 통해서 </p>
+    <p>kakao, naver, google 토큰 발급 요청 API를 통해 회원 정보중 "email"을 받아서 로그인할 수 있습니다.</p>
     <ul>
       <li> 
         <p>api : KakaoLoginApi</p>
