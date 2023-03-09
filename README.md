@@ -25,9 +25,7 @@
   </li>
    <li>
     <h3>:rose: 메인페이지</h3>
-    <ul>
-      <li><img width="1470" alt="img1" src="https://user-images.githubusercontent.com/80198577/223934322-2d212067-4378-4fb8-a93e-6b2f3335a261.png"/></li>
-    </ul>
+    <img width="1470" alt="img1" src="https://user-images.githubusercontent.com/80198577/223934322-2d212067-4378-4fb8-a93e-6b2f3335a261.png"/>
   </li>
   <li>
     <h3>:cactus: modal</h3>
