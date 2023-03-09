@@ -5,10 +5,16 @@ import Router, { useRouter } from "next/router";
 import { RootState, useAppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import conventionGenerator from "../helpers/convention-generator";
-import {setKeyword, setState, setConventionId,} from "../store/reducers/state-reducer";
+import {
+  setKeyword,
+  setState,
+  setConventionId,
+} from "../store/reducers/state-reducer";
 import { setConvention } from "../store/reducers/convention-reducer";
 import ConventionInterface from "../interface/convention-interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Emoji } from "emoji-api";
+import { addAbortSignal } from "stream";
 
 const ListComponent = () => {
   const convention = useSelector((state: RootState) => state.convention);
@@ -20,7 +26,17 @@ const ListComponent = () => {
     dispatch(setConventionId(index));
     router.push("/list-view");
   };
+  const [emojis, setEmojis] = useState("");
   const day = dayjs(new Date()).format("YYYY-MM-DD HH:mm");
+
+  useEffect(() => {
+  
+
+    const emoji = require("emoji-api");
+    const emojiIco = emoji.emojis;
+    setEmojis(emojiIco.map((i: any) => i.emoji));
+    console.log(emoji.emojis);
+  }, []);
 
   return (
     <div className="mainList">
@@ -35,7 +51,7 @@ const ListComponent = () => {
                 <div className="list">
                   <div onClick={() => handleClickView(item, index)}>
                     <div className="nickname">
-                      <img src="img/emoji.jpeg" />
+                      <span>{emojis[index]}</span>
                       <span>nickname</span>
                     </div>
                     <p className="listTitle">{item.keyword}</p>

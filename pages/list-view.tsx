@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import conventionGenerator from "../helpers/convention-generator";
 import LikeComponent from "../components/like-component";
 
+
 const ListView = () => {
   const convention = useSelector((state: RootState) => state.convention);
   const dispatch = useAppDispatch();
   const router = useRouter();
+
 
   return (
     <BaseLayout>

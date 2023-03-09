@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
 import UserInterface from "../../interface/user-interface";
 
 const initialState: UserInterface = {

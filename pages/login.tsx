@@ -37,6 +37,7 @@ const Login = () => {
     const parent = document.getElementById("google_btn");
     window.google.accounts.id.renderButton(parent, {
       width: "338",
+      text :"google 로그인"
     });
     window.google.accounts.id.initialize({
       client_id:

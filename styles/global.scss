@@ -310,6 +310,9 @@ body {
   color: var(--fontColor);
   span {
     display: block;
+    &:first-of-type{
+      font-size: 30px;
+    }
   }
 }
 .registrationDate {
