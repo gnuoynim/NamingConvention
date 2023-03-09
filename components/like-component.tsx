@@ -1,10 +1,9 @@
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { increment } from "../store/reducers/convention-reducer";
-import DepthInterface from "../interface/depth-interface";
 import { addLike } from "../store/reducers/user-reducer";
 
-const Like = ({ index }: { index: number }) => {
+const LikeComponent = ({ index }: { index: number }) => {
   const dispatch = useAppDispatch();
   const convention = useSelector((state: RootState) => state.convention);
   const user = useSelector((state: RootState) => state.user);
@@ -27,4 +26,4 @@ const Like = ({ index }: { index: number }) => {
     </div>
   );
 };
-export default Like;
+export default LikeComponent;

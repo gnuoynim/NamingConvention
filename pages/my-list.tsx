@@ -1,5 +1,5 @@
 import BaseLayout from "../layout/base-layout";
-import Like from "../components/like";
+import LikeComponent from "../components/like-component";
 import ModalComponent from "../components/modal-component";
 import { RootState, useAppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";

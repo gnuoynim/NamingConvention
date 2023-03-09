@@ -1,7 +1,7 @@
 import ScaleInterface from "../interface/scale-interface";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { removeDepth } from "../store/reducers/depth-reducer";
 
 const DepthBoxComponent = ({ scale = "", index, id = "" }: ScaleInterface) => {

@@ -1,20 +1,16 @@
-import Like from "./like";
+import LikeComponent from "./like-component";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import Router, { useRouter } from "next/router";
 import { RootState, useAppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import conventionGenerator from "../helpers/convention-generator";
-import {
-  setKeyword,
-  setState,
-  setConventionId,
-} from "../store/reducers/state-reducer";
+import {setKeyword, setState, setConventionId,} from "../store/reducers/state-reducer";
 import { setConvention } from "../store/reducers/convention-reducer";
 import ConventionInterface from "../interface/convention-interface";
 import { useState } from "react";
 
-const List = () => {
+const ListComponent = () => {
   const convention = useSelector((state: RootState) => state.convention);
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
@@ -48,7 +44,7 @@ const List = () => {
                     </p>
                     <p className="registrationDate">{day}</p>
                   </div>
-                  <Like index={index} />
+                  <LikeComponent index={index} />
                 </div>
               </div>
             ))}
@@ -59,4 +55,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default ListComponent;

@@ -1,5 +1,5 @@
 import BaseLayout from "../layout/base-layout";
-import List from "../components/list";
+import ListComponent from "../components/list-component";
 import SearchComponent from "../components/search-component";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -31,7 +31,7 @@ const Index = () => {
       >
         등록
       </button>
-      <List />
+      <ListComponent />
     </BaseLayout>
   );
 };

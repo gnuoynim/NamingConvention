@@ -1,9 +1,9 @@
 import BaseLayout from "../layout/base-layout";
-import Like from "../components/like";
 import { useRouter } from "next/router";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import conventionGenerator from "../helpers/convention-generator";
+import LikeComponent from "../components/like-component";
 
 const ListView = () => {
   const convention = useSelector((state: RootState) => state.convention);
@@ -29,7 +29,7 @@ const ListView = () => {
                     <li key={index}>{i.content}</li>
                   ))}
                 </ul>
-                <Like index={index} />
+                <LikeComponent index={index} />
               </div>
             </div>
           </div>
