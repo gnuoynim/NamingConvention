@@ -26,7 +26,7 @@
    <li>
     <h3>:hatched_chick: 메인페이지</h3>
     <ul>
-      <li><img src=""></li>
+      <li><img src="./images/img1.png"></li>
     </ul>
   </li>
   <li>
