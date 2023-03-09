@@ -36,7 +36,7 @@
     </ul>
   </li>
   <li>
-    <h3>:hatched_chick:  로그아웃</h3>
+    <h3>:bouquet: 로그아웃</h3>
     <ul>
       <li>로그아웃</li>
     </ul>
