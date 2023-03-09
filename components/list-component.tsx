@@ -30,12 +30,9 @@ const ListComponent = () => {
   const day = dayjs(new Date()).format("YYYY-MM-DD HH:mm");
 
   useEffect(() => {
-  
-
     const emoji = require("emoji-api");
     const emojiIco = emoji.emojis;
     setEmojis(emojiIco.map((i: any) => i.emoji));
-    console.log(emoji.emojis);
   }, []);
 
   return (
